@@ -23,7 +23,7 @@ import { AttributeType } from '@aws-cdk/aws-dynamodb';
 
 export class ServerlessBackendStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+    super(scope, !!id && id.length > 0 ? id : 'ServerlessBackendStack', props);
 
     const websiteBucketName: string = Fn.importValue('websiteBucket');
 
@@ -53,8 +53,8 @@ export class ServerlessBackendStack extends Stack {
       initialPolicy: [
         new PolicyStatement({
           actions: ["s3:PutObject",
-                    "s3:PutObjectAcl",
-                    "s3:PutObjectVersionAcl"],
+            "s3:PutObjectAcl",
+            "s3:PutObjectVersionAcl"],
           resources: [`arn:${Aws.PARTITION}:s3:::${websiteBucketName}/*`]
         }),
       ]
@@ -80,10 +80,11 @@ export class ServerlessBackendStack extends Stack {
       dynamoTableProps: {
         tableName: 'Rides',
         partitionKey: {
-            name: 'RideId',
-            type: AttributeType.STRING
+          name: 'RideId',
+          type: AttributeType.STRING
         }
       }
     });
   }
 }
+export default ServerlessBackendStack;

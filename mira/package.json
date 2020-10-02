@@ -1,0 +1,10 @@
+{
+    "name": "mira-demos",
+    "dependencies": {
+        "minimist": "^1.2.5"
+    },
+    "scripts": {
+        "deploy:s3-demo": "node setup aws-s3-static-website && cd ../source/use_cases/aws-s3-static-website && npx mira deploy s3-static-website --file=lib/s3-static-site-stack.js",
+        "deploy:serverless-demo": "node setup aws-serverless-web-app && cd ../source/use_cases/aws-serverless-web-app && npx mira deploy serverless-web-app --file=lib/s3-static-site-stack.js && npx mira deploy serverless-web-app --file=lib/serverless-backend-stack.js"
+    }
+}

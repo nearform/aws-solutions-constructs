@@ -1,0 +1,18 @@
+{
+    "app": {
+        "prefix": "nf",
+        "name": "mira-demos"
+    },
+    "dev": {
+        "target": "default"
+    },
+    "accounts": {
+        "default": {
+            "env": {
+                "account": "101259067028",
+                "region": "eu-west-1"
+            },
+            "profile": "mira-dev"
+        }
+    }
+}

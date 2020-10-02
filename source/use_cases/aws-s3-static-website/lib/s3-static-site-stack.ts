@@ -20,7 +20,7 @@ import { PolicyStatement } from '@aws-cdk/aws-iam';
 
 export class S3StaticWebsiteStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+    super(scope, !!id && id.length > 0 ? id : 'S3StaticWebsiteStack', props);
 
     const sourceBucket: string = 'wildrydes-us-east-1';
     const sourcePrefix: string = 'WebApplication/1_StaticWebHosting/website/';
@@ -73,3 +73,4 @@ export class S3StaticWebsiteStack extends Stack {
     });
   }
 }
+export default S3StaticWebsiteStack
